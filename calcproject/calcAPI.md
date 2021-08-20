@@ -22,3 +22,9 @@ Note that test case descriptions are usually in their own file but for the sake 
 [3,-4- 2],
 [0, 0, 0],
 [0,-3,-3]
+
+#### Floats
+sum(10, 11.5) return 21.5
+[2.5, 3, 5.5],
+[-2.5, -3, -5.5],
+[2.4, -2.5, -0.1]
