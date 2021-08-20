@@ -23,3 +23,14 @@ describe('Test sum with integers using test.each', () => {
 		expect(sum(a, b)).toBe(expected);
 	});
 });
+
+describe('Testing sum with floats', () => {
+	const testValues = [
+		[2.5, 3, 5.5],
+		[-2.5, -3, -5.5],
+		[2.4, -2.5, -0.1]
+	];
+	test.each(testValues)('sum(%f, %f) = %f', (a, b, expected) => {
+		expect(sum(a, b)).toBeCloseTo(expected);
+	});
+});
