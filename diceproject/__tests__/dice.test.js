@@ -51,6 +51,7 @@ describe('Test rolling', () => {
       dice.roll()
       expect(dice.dots).toBeGreaterThanOrEqual(1)
       expect(dice.dots).toBeLessThanOrEqual(20)
+      expect(dice.dots).toBeDefined()
     })
   })
 })
