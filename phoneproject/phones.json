@@ -1,0 +1,30 @@
+[
+  {
+    "firstname": "Jo",
+    "lastnAme": "Do",
+    "phones": [
+      {
+        "type": "home",
+        "number": "01"
+      },
+      {
+        "type": "work",
+        "number": "02"
+      }
+    ]
+  },
+  {
+    "firstname": "Jon",
+    "lastname": "Don",
+    "phones": [
+      {
+        "type": "home",
+        "number": "11"
+      },
+      {
+        "type": "work",
+        "number": "12"
+      }
+    ]
+  }
+]
