@@ -35,3 +35,22 @@ describe('Test exceptions', () => {
     expect(() => new Dice(unbound)).toThrow(expected)
   })
 })
+
+describe('Test rolling', () => {
+  describe('Default upper bound 6', () => {
+    const dice = new Dice()
+    test('test when rolled', () => {
+      dice.roll()
+      expect(dice.dots).toBeGreaterThanOrEqual(1)
+      expect(dice.dots).toBeLessThanOrEqual(6)
+    })
+  })
+  describe('upper bound 20', () => {
+    const dice = new Dice(20)
+    test('test when rolled', () => {
+      dice.roll()
+      expect(dice.dots).toBeGreaterThanOrEqual(1)
+      expect(dice.dots).toBeLessThanOrEqual(20)
+    })
+  })
+})
