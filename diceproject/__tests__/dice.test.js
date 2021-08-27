@@ -20,7 +20,7 @@ describe('Create a dice with given upper bound', () => {
   const testCases = [...Array(21).keys()].slice(1)
   test.each(testCases)('test upper bound %s', upperBound => {
     const dice = new Dice(upperBound)
-    expect(dice.maximumValue).toBe(upperBound)
+    expect(dice.maximumValue).toBeLessThanOrEqual(upperBound)
   })
 })
 
