@@ -3,7 +3,7 @@
 module.exports = class Dice {
   constructor(upperBound = 6) {
     if (!Number.isInteger(upperBound)) throw 'Upper bound must be an integer'
-    if (upperBound < 1) throw 'Upper bound too small'
+    if (upperBound < 2) throw 'Upper bound too small'
     if (upperBound > 20) throw 'Upper bound too large'
     this.upperBound = upperBound
     this.dotCount = 0
