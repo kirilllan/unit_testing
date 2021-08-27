@@ -23,3 +23,15 @@ describe('Create a dice with given upper bound', () => {
     expect(dice.maximumValue).toBe(upperBound)
   })
 })
+
+describe('Test exceptions', () => {
+  const testCases = [
+    [1, 'Upper bound too small'],
+    [21, 'Upper bound too large'],
+    [' ', 'Upper bound must be an integer'],
+    [2.5, 'Upper bound must be an integer']
+  ]
+  test.each(testCases)('upper bound %s throws an exception %s', (unbound, expected) => {
+    expect(() => new Dice(unbound)).toThrow(expected)
+  })
+})
