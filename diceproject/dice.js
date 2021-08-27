@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = class Dice {
-  constructor(upperBound) {
+  constructor(upperBound = 6) {
     this.upperBound = upperBound
     this.dotCount = 0
   }
@@ -13,5 +13,8 @@ module.exports = class Dice {
   }
   get minimumValue() {
     return 1
+  }
+  roll() {
+    this.dotCount = Math.ceil(Math.random() * this.upperBound)
   }
 }
