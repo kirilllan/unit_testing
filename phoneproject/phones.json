@@ -26,5 +26,19 @@
         "number": "12"
       }
     ]
+  },
+  {
+    "firstname": "Jone",
+    "lastname": "Done",
+    "phones": [
+      {
+        "type": "home",
+        "number": "21"
+      },
+      {
+        "type": "work",
+        "number": "22"
+      }
+    ]
   }
 ]
