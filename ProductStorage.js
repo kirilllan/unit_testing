@@ -101,7 +101,15 @@ class ProductStorage {
 
   getPriceWithoutExtras(id) {
     let hasIt = datastorage.find(e => e.id === id)
-    if (!hasIt.hasOwnProperty('accessories')) throw 'nothing found with given id'
+    if (!hasIt.hasOwnProperty('price')) throw 'nothing found with given id'
+    console.log(hasIt.price)
+    return hasIt.price
+  }
+
+  getTotalPrice(id) {
+    let hasIt = datastorage.find(e => e.id === id)
+    if (hasIt == undefined) 'throw nothing found with given id'
+    return hasIt.price + hasIt.extras.reduce((a, b) => a + b.price ? +b.price : 0, 0)
   }
 
 
@@ -114,3 +122,5 @@ console.log(new ProductStorage(datastorage).getAllProductTypes())
 console.log(new ProductStorage(datastorage).getAllProductsByType('moccamaster'))
 console.log(new ProductStorage(datastorage).hasAccessories(2))
 console.log(new ProductStorage(datastorage).GetProductAccessories(2))
+console.log(new ProductStorage(datastorage).getPriceWithoutExtras(2))
+console.log(new ProductStorage(datastorage).getTotalPrice(1))
