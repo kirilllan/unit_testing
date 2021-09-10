@@ -109,9 +109,20 @@ class ProductStorage {
   getTotalPrice(id) {
     let hasIt = datastorage.find(e => e.id === id)
     if (hasIt == undefined) 'throw nothing found with given id'
-    return hasIt.price + hasIt.extras.reduce((a, b) => a + b.price ? +b.price : 0, 0)
+    let price =
+      JSON.stringify(hasIt).match(/price..\d+/g).join(' ').replace(/\D+/g, ' ').split(' ').reduce((a, b) => a + +b, 0)
+    console.log(price)
+    return price
   }
 
+  getPriceOfTheExtras(id) {
+    let hasIt = datastorage.find(e => e.id === id)
+    if (hasIt == undefined) 'throw nothing found with given id'
+    console.log(hasIt.extras)
+    let extraPrices = hasIt.extras.reduce((a, b) => a + +b.price, 0)
+    console.log(extraPrices)
+    return extraPrices
+  }
 
 
 }
@@ -124,3 +135,4 @@ console.log(new ProductStorage(datastorage).hasAccessories(2))
 console.log(new ProductStorage(datastorage).GetProductAccessories(2))
 console.log(new ProductStorage(datastorage).getPriceWithoutExtras(2))
 console.log(new ProductStorage(datastorage).getTotalPrice(1))
+console.log(new ProductStorage(datastorage).getPriceOfTheExtras(2))
