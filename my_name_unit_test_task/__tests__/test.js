@@ -42,6 +42,16 @@ test('id 2 price is 99', () => {
   expect(new Prod(prods).getPriceWithoutExtras(2)).toEqual(99)
 })
 
+// test 8 getTotalPrice(id)
+test('id 1 TOTAL price is 224', () => {
+  expect(new Prod(prods).getTotalPrice(1)).toStrictEqual(224)
+})
+
+// test 9 getPriceOfTheExtras(id)
+test('id 2 extra prices to total 15', () => {
+  expect(new Prod(prods).getPriceOfTheExtras(2)).toEqual(25)
+})
+
 //console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
   const testFunction = new Prod(101010)
