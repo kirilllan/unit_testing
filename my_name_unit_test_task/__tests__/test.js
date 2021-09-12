@@ -22,6 +22,16 @@ test('types', () => {
   expect(new Prod(prods).getAllProductTypes().length).toBeGreaterThan(1)
 })
 
+// test 4 getAllProductsByType(type)
+test('test if there are moccamasters', () => {
+  expect(new Prod(prods).getAllProductsByType("moccamaster").length).toBeGreaterThanOrEqual(1)
+})
+
+// test 5 hasAccessories(id)
+test('test if there are accessories in product id 2', () => {
+  expect(new Prod(prods).hasAccessories(2)).toBe(true)
+})
+
 //console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
   const testFunction = new Prod(101010)
