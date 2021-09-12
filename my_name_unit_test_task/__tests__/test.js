@@ -17,6 +17,11 @@ describe('Testing sum with floats', () => {
   });
 });
 
+//test 3 getAllProductTypes
+test('types', () => {
+  expect(new Prod(prods).getAllProductTypes().length).toBeGreaterThan(1)
+})
+
 //console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
   const testFunction = new Prod(101010)
