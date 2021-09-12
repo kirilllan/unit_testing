@@ -9,7 +9,13 @@ describe('Find by id', () => {
   })
 });
 
-
+//test 2 getAllIdsByModel
+describe('Testing sum with floats', () => {
+  const testVals = [["Future 2025", 1]]
+  test.each(testVals)('getAllIdsByModel("^Future 2025^") = %f', (a, expected) => {
+    expect(new Prod(prods).getAllIdsByModel("Future 2025")).toHaveLength(1);
+  });
+});
 
 //console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
