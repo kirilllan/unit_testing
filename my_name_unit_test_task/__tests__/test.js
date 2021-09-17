@@ -3,11 +3,21 @@ const Prod = require('../ProductStorage.js')
 
 
 // test1 getById 
-describe('Find by id', () => {
-  test('id 3 exists', () => {
-    expect(new Prod(prods).getById(3)).toBeInstanceOf(Object);
+describe('Test getById(id)#1:', () => {
+  test('not passing an argument/no parameter given', () => {
+    expect(() => new Prod(prods).getById()).toThrow(new Error('no parameter passed'))
   })
-});
+})
+describe('Test getById(id)#2:', () => {
+  test('id 3 exists', () => {
+    expect(new Prod(prods).getById(3)).toBeInstanceOf(Object)
+  })
+})
+describe('Test getById(id)#3:', () => {
+  test('nothing found with specific id, returns undefined', () => {
+    expect(new Prod(prods).getById(123000)).toBe(undefined)
+  })
+})
 
 //test 2 getAllIdsByModel
 describe('Testing sum with floats', () => {
