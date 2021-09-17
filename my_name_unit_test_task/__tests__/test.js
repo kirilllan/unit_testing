@@ -19,13 +19,34 @@ describe('Test getById(id)#3:', () => {
   })
 })
 
-//test 2 getAllIdsByModel
-describe('Testing sum with floats', () => {
-  const testVals = [["Future 2025", 1]]
-  test.each(testVals)('getAllIdsByModel("^Future 2025^") = %f', (a, expected) => {
-    expect(new Prod(prods).getAllIdsByModel("Future 2025")).toHaveLength(1);
-  });
-});
+//test 2 getAllIdsByModel(value)
+describe('Testing if values pushed to array', () => {
+  const testVals = [
+    ['Future 2025', 1],
+    ['I don\'t exist hehe', 0],
+    [NaN, 0]
+  ]
+  const testVals2 = [
+    ['Future 2025', 1],
+    ['Beast II', 2],
+    ['MaxEffect 2000', 3]
+  ]
+  const testVals3 = [
+    ['Future 2025', [11]],
+    ['Beast II', [-2]],
+    ['MaxEffect 2000', ['id']]
+  ]
+  test.each(testVals)('getAllIdsByModel("^%s^") = %d', (modelName, expectedLength) => {
+    expect(new Prod(prods).getAllIdsByModel(modelName)).toHaveLength(expectedLength)
+  })
+  test.each(testVals2)('Contains correct id', (modelName, theId) => {
+    expect(new Prod(prods).getAllIdsByModel(modelName)).toContain(theId)
+  })
+  test.each(testVals3)('Not to contain', (modelName, wrongId) => {
+    expect(new Prod(prods).getAllIdsByModel(modelName)).toEqual(expect.not.arrayContaining(wrongId))
+  })
+})
+
 
 //test 3 getAllProductTypes
 test('types', () => {
