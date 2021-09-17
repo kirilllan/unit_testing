@@ -64,6 +64,13 @@ test('getAllProductTypes() has NOT jet-pack', () => {
 test('test if there are moccamasters', () => {
   expect(new Prod(prods).getAllProductsByType("moccamaster").length).toBeGreaterThanOrEqual(1)
 })
+test('test if there is radio', () => {
+  expect(new Prod(prods).getAllProductsByType("radio")).toBeDefined()
+})
+test('throw, when missing an parameter', () => {
+  expect(() => new Prod(prods).getAllProductsByType()).toThrow()
+})
+
 
 // test 5 hasAccessories(id)
 test('test if there are accessories in product id 2', () => {
