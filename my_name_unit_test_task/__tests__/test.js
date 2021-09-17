@@ -76,6 +76,13 @@ test('throw, when missing an parameter', () => {
 test('test if there are accessories in product id 2', () => {
   expect(new Prod(prods).hasAccessories(2)).toBe(true)
 })
+test('test that false is returned when there are NO accessories when missing a param', () => {
+  expect(new Prod(prods).hasAccessories()).toBeFalsy()
+})
+test('test that false is returned when there are NO accessories in id 3, empty array falsiness', () => {
+  expect(new Prod(prods).hasAccessories(3)).toBeFalsy()
+})
+
 
 // test 6 GetProductAccessories(id)
 test('id 3 has no accessories should be true', () => {
