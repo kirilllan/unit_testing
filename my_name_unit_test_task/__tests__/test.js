@@ -49,9 +49,16 @@ describe('Testing if values pushed to array', () => {
 
 
 //test 3 getAllProductTypes
-test('types', () => {
+test('getAllProductTypes() has more than 1 different types', () => {
   expect(new Prod(prods).getAllProductTypes().length).toBeGreaterThan(1)
 })
+test('getAllProductTypes() has moccamaster', () => {
+  expect(new Prod(prods).getAllProductTypes()).toContain('moccamaster')
+})
+test('getAllProductTypes() has NOT jet-pack', () => {
+  expect(new Prod(prods).getAllProductTypes()).not.toContain('jet-pack')
+})
+
 
 // test 4 getAllProductsByType(type)
 test('test if there are moccamasters', () => {
