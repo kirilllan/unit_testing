@@ -88,6 +88,15 @@ test('test that false is returned when there are NO accessories in id 3, empty a
 test('id 3 has no accessories should be true', () => {
   expect(new Prod(prods).GetProductAccessories(3)).toEqual([])
 })
+test('returns an empty array if no accessories found with invalid id', () => {
+  expect(new Prod(prods).GetProductAccessories(123000).length).toBeLessThanOrEqual(0)
+})
+test('getProductAccessories(1) should return ["cleaning brush", "coffee cup"]', () => {
+  const what = jest.fn(() => new Prod(prods).GetProductAccessories(1))
+  what()
+  expect(what).toHaveReturnedWith(["cleaning brush", "coffee cup"])
+})
+
 
 //test 7 getPriceWithoutExtras(id)
 test('id 2 price is 99', () => {
