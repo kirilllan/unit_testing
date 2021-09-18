@@ -139,12 +139,18 @@ describe('Testing the right price', () => {
 })
 
 
-//console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
-  const testFunction = new Prod(101010)
+  const testFunction = new Prod('lalala')
+  const testFunction2 = new Prod(NaN)
+  const testFunction3 = new Prod({})
 
   test("test if a function throws an exception", () => {
     expect(() => testFunction()).toThrow("testFunction is not a function");
-  });
-});
-
+  })
+  test("test if a function throws an exception 2", () => {
+    expect(() => testFunction2()).toThrow();
+  })
+  test("test if a function throws an exception 3", () => {
+    expect(() => testFunction3()).toThrow();
+  })
+})
