@@ -98,10 +98,19 @@ test('getProductAccessories(1) should return ["cleaning brush", "coffee cup"]', 
 })
 
 
-//test 7 getPriceWithoutExtras(id)
+// test 7 getPriceWithoutExtras(id)
 test('id 2 price is 99', () => {
   expect(new Prod(prods).getPriceWithoutExtras(2)).toEqual(99)
 })
+test('throw, when no product with such id', () => {
+  expect(() => new Prod(prods).getPriceWithoutExtras(123000)).toThrow('nothing found with given id')
+})
+test('getPriceWithoutExtras(2) should return 99', () => {
+  const hmm = jest.fn(() => new Prod(prods).getPriceWithoutExtras(2))
+  hmm()
+  expect(hmm).toHaveReturnedWith(99)
+})
+
 
 // test 8 getTotalPrice(id)
 test('id 1 TOTAL price is 224', () => {
