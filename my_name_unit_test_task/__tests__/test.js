@@ -128,6 +128,16 @@ test('throw, when no product with such id', () => {
 test('id 2 extra prices to total 15', () => {
   expect(new Prod(prods).getPriceOfTheExtras(2)).toEqual(25)
 })
+test('throw, when no product with such id', () => {
+  expect(() => new Prod(prods).getPriceOfTheExtras(123000)).toThrow('nothing found with given id')
+})
+describe('Testing the right price', () => {
+  const testVals = [[1, 125], [3, 0]]
+  test.each(testVals)('getPriceOfTheExtras("^%d^") = %d', (theId, expectedPriceOfExtras) => {
+    expect(new Prod(prods).getPriceOfTheExtras(theId)).toEqual(expectedPriceOfExtras)
+  })
+})
+
 
 //console.log(new Prod(3))
 describe("this tests for an exceptiom", () => {
