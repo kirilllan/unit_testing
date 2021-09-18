@@ -45,7 +45,6 @@ const datastorage = [
   }
 ]
 
-//export default class ProductStorage
 module.exports = class ProductStorage {
 
   constructor(jsonData) {
@@ -54,13 +53,9 @@ module.exports = class ProductStorage {
   }
 
   getById(id) {
+    if (id == undefined) throw new Error('no parameter passed')
     let found;
-    datastorage.forEach(e => {
-      if (e.id === id) found = e
-      //if (!e.hasOwnProperty('id')) 'parameter missing';
-      //console.log(found)
-      //return found ? found : null
-    })
+    datastorage.forEach(e => { if (e.id === id) found = e })
     return found
   }
 
@@ -69,41 +64,41 @@ module.exports = class ProductStorage {
     for (let i = 0; i < datastorage.length; i++) {
       if (datastorage[i].model === value) accepted.push(datastorage[i].id)
     }
-    console.log(accepted)
+    //console.log(accepted)
     return accepted
   }
 
   getAllProductTypes() {
     let indiTypes = [...new Set(datastorage.map(e => e.type))]
-    console.log(indiTypes)
+    //console.log(indiTypes)
     return indiTypes
   }
 
   getAllProductsByType(type) {
+    if (type == undefined) throw 'input a type, plz pls'
     //if (!e.hasOwnProperty(type)) 'missing parameter'; 
     let types = datastorage.filter(e => e.type === type)
-    console.log(types)
+    //console.log(types)
     return types
   }
 
   hasAccessories(id) {
+    if (!id) return false
     let hasIt = datastorage.find(e => e.id === id)
-    return hasIt.hasOwnProperty('accessories')
+    return hasIt.hasOwnProperty('accessories') && hasIt.accessories.length > 0
   }
 
   GetProductAccessories(id) {
-    let accessories = []
-    datastorage.forEach(e => {
-      if (e.hasOwnProperty('accessories')) accessories.push(e.accessories.flat())
-    })
-    console.log(accessories)
-    return accessories
+    let ob = datastorage.find(e => e.id === id)
+    return ob ? ob.accessories : []
   }
 
   getPriceWithoutExtras(id) {
+    if (id == undefined) throw 'nothing found with given id'
     let hasIt = datastorage.find(e => e.id === id)
+    if (hasIt == undefined) throw 'nothing found with given id'
     if (!hasIt.hasOwnProperty('price')) throw 'nothing found with given id'
-    console.log(hasIt.price)
+    //console.log(hasIt.price)
     return hasIt.price
   }
 
@@ -112,16 +107,16 @@ module.exports = class ProductStorage {
     if (hasIt == undefined) 'throw nothing found with given id'
     let price =
       JSON.stringify(hasIt).match(/price..\d+/g).join(' ').replace(/\D+/g, ' ').split(' ').reduce((a, b) => a + +b, 0)
-    console.log(price)
+    //console.log(price)
     return price
   }
 
   getPriceOfTheExtras(id) {
     let hasIt = datastorage.find(e => e.id === id)
-    if (hasIt == undefined) 'throw nothing found with given id'
-    console.log(hasIt.extras)
+    if (hasIt == undefined) throw 'nothing found with given id'
+    //console.log(hasIt.extras)
     let extraPrices = hasIt.extras.reduce((a, b) => a + +b.price, 0)
-    console.log(extraPrices)
+    //console.log(extraPrices)
     return extraPrices
   }
 
@@ -133,8 +128,7 @@ module.exports = class ProductStorage {
 // console.log(new ProductStorage(datastorage).getAllProductTypes())
 // console.log(new ProductStorage(datastorage).getAllProductsByType('moccamaster'))
 // console.log(new ProductStorage(datastorage).hasAccessories(2))
-// console.log(new ProductStorage(datastorage).GetProductAccessories(2))
+//console.log(new ProductStorage(datastorage).GetProductAccessories(2))
 // console.log(new ProductStorage(datastorage).getPriceWithoutExtras(2))
 // console.log(new ProductStorage(datastorage).getTotalPrice(1))
 // console.log(new ProductStorage(datastorage).getPriceOfTheExtras(2))
-
