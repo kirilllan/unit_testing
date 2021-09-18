@@ -116,6 +116,13 @@ test('getPriceWithoutExtras(2) should return 99', () => {
 test('id 1 TOTAL price is 224', () => {
   expect(new Prod(prods).getTotalPrice(1)).toStrictEqual(224)
 })
+test('id 2 TOTAL price is 124', () => {
+  expect(new Prod(prods).getTotalPrice(2)).toEqual(124)
+})
+test('throw, when no product with such id', () => {
+  expect(() => new Prod(prods).getPriceWithoutExtras(123000)).toThrow('nothing found with given id')
+})
+
 
 // test 9 getPriceOfTheExtras(id)
 test('id 2 extra prices to total 15', () => {
